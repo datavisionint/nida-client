@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace SoftwareGalaxy\NidaClient;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use SoftwareGalaxy\NidaClient\Commands\NidaClientCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class NidaClientServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('nida-client')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_nida-client_table')
+            ->hasCommand(NidaClientCommand::class);
     }
 }

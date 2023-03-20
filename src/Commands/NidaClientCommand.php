@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace SoftwareGalaxy\NidaClient\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class NidaClientCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'nida-client';
 
     public $description = 'My command';
 
