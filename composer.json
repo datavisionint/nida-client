@@ -1,6 +1,7 @@
 {
     "name": "software-galaxy/nida-client",
     "description": "A client for NIDA API",
+    "version": "0.0.1",
     "keywords": [
         "software galaxy",
         "laravel",
