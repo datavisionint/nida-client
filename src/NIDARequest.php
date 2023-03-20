@@ -30,4 +30,9 @@ class NIDARequest
         // PKCS1-v1.5 Signature and Encryption scheme.
 
     }
+
+    public function convertArrayToXml(array $data)
+    {
+        
+    }
 }
