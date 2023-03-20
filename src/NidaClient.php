@@ -4,8 +4,8 @@ namespace SoftwareGalaxy\NidaClient;
 
 class NidaClient
 {
-    public function ping()
+    public function test()
     {
-        dump("pong");
+        dump("pong", config("nida-client.base_wsdl"));
     }
 }
