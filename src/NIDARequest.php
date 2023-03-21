@@ -13,11 +13,11 @@ class NIDARequest
         return new self($data);
     }
 
-    public function prepare()
+    public function preparePayload(array $payload)
     {
         // 1. Construct CIG Web Service request payload as per the respective web service
         // method.
-        $payload = $this->data;
+        
 
         // 2. Encrypt the request payload using Rijndael (AES-256) algorithm.
         // Note: AES crypto parameter (i.e. Key and Initial Vector (IV)) shall be randomly
@@ -29,10 +29,5 @@ class NIDARequest
         // Note: Refer to PKCS #1 v2.1: RSA Cryptography Standard specification for
         // PKCS1-v1.5 Signature and Encryption scheme.
 
-    }
-
-    public function convertArrayToXml(array $data)
-    {
-        
     }
 }
