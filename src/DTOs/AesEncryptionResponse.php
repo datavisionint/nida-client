@@ -51,18 +51,20 @@ class AesEncryptionResponse
         return $this;
     }
 
-    public function getMessageSecurityPublicKeyPath(){
+    public function getMessageSecurityPublicKeyPath()
+    {
         return $this->messageSecurityPublicKeyPath;
     }
 
-    public function checkMessageSecurityPublicKeyPath(){
+    public function checkMessageSecurityPublicKeyPath()
+    {
         throw_if(
             $this->messageSecurityPublicKeyPath == null,
-            new NidaMessageSecurityPublicKeyPathIsInvalid("The message security key is not set")
+            new NidaMessageSecurityPublicKeyPathIsInvalid('The message security key is not set')
         );
 
         throw_if(
-            !file_exists($this->messageSecurityPublicKeyPath),
+            ! file_exists($this->messageSecurityPublicKeyPath),
             new NidaMessageSecurityPublicKeyPathIsInvalid("The message security at path {$this->messageSecurityPublicKeyPath} is does not exist!")
         );
     }

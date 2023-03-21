@@ -3,7 +3,6 @@
 namespace SoftwareGalaxy\NidaClient;
 
 use SoftwareGalaxy\NidaClient\Commands\NidaClientCommand;
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 

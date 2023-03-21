@@ -11,7 +11,8 @@ class NidaClient
      */
     private NidaRequest $nidaRequest;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->nidaRequest = new NidaRequest();
     }
 

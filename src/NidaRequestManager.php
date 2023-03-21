@@ -103,6 +103,6 @@ class NidaRequestManager
             ->dropXmlDeclaration()
             ->toXml();
 
-        dump("Content model: " . $this->contentModel);
+        dump('Content model: '.$this->contentModel);
     }
 }
