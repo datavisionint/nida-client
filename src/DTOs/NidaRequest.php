@@ -8,9 +8,9 @@ class NidaRequest
 {
     use GeneratesRequestIds;
 
-    public NidaRequestBody $body = null;
+    public ?NidaRequestBody $body = null;
 
-    public NidaRequestHeader $headers = null;
+    public ?NidaRequestHeader $headers = null;
 
     /**
      * Create NidaRequest instance
