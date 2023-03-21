@@ -41,13 +41,10 @@ trait EncryptsNidaRequest
             $message = serialize($message);
         }
 
-
-        $file = fopen(base_path($rsaKeyPath), 'r');
-        $data = fread($file, filesize(base_path($rsaKeyPath)));
-        fclose($file);
-
         $publicKey = openssl_pkey_get_public(
-            $data
+            file_get_contents(
+                $rsaKeyPath
+            )
         );
         openssl_public_encrypt($message, $encrypted, $publicKey, OPENSSL_PKCS1_PADDING);
         $encrypted = base64_encode($encrypted);
