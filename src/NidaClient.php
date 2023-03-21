@@ -11,6 +11,10 @@ class NidaClient
      */
     private NidaRequest $nidaRequest;
 
+    public function __construct() {
+        $this->nidaRequest = new NidaRequest();
+    }
+
     /**
      * Instantiate NidaClient
      *
@@ -18,7 +22,6 @@ class NidaClient
      */
     public function make()
     {
-        $this->nidaRequest = new NidaRequest();
         return new self;
     }
 
