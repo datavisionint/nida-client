@@ -68,12 +68,12 @@ class NidaRequestManager
         $encryptedPayload = $this->generateAesEncryption(
             $this->nidaRequest->body->payload
         )->setMessageSecurityPublicKeyPath(
-            config('nida-client.nida_message_security_ca_path')
+            base_path(config('nida-client.nida_message_security_ca_path'))
         );
 
         $payloadSignature = $this->generateRSASSA_PKCS1_V1_5Encryption(
             $encryptedPayload->encryptedValue,
-            config('nida-client.nida_stakeholder_certificate_path')
+            base_path(config('nida-client.nida_stakeholder_certificate_path'))
         );
 
         $root = [
