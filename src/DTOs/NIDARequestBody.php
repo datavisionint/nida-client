@@ -26,7 +26,7 @@ class NidaRequestBody
     /**
      * Check if the request body is valid
      *
-     * @param array<string, mixed>
+     * @param array<string, mixed> $body
      * @return void
      *
      * @throws NidaRequestBodyPropertyNotDefinedException
