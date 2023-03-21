@@ -9,7 +9,7 @@ class AesEncryptionResponse
 {
     use EncryptsNidaRequest;
 
-    private $messageSecurityPublicKeyPath = null;
+    private string|null $messageSecurityPublicKeyPath = null;
 
     public function __construct(
         public string $key = '',
@@ -44,19 +44,19 @@ class AesEncryptionResponse
         );
     }
 
-    public function setMessageSecurityPublicKeyPath(string $path)
+    public function setMessageSecurityPublicKeyPath(string $path): self
     {
         $this->messageSecurityPublicKeyPath = $path;
 
         return $this;
     }
 
-    public function getMessageSecurityPublicKeyPath()
+    public function getMessageSecurityPublicKeyPath(): string|null
     {
         return $this->messageSecurityPublicKeyPath;
     }
 
-    public function checkMessageSecurityPublicKeyPath()
+    public function checkMessageSecurityPublicKeyPath(): void
     {
         throw_if(
             $this->messageSecurityPublicKeyPath == null,
@@ -64,7 +64,7 @@ class AesEncryptionResponse
         );
 
         throw_if(
-            ! file_exists($this->messageSecurityPublicKeyPath),
+            !file_exists($this->messageSecurityPublicKeyPath),
             new NidaMessageSecurityPublicKeyPathIsInvalid("The message security at path {$this->messageSecurityPublicKeyPath} is does not exist!")
         );
     }

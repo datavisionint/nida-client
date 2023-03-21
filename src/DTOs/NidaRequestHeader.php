@@ -20,7 +20,7 @@ class NidaRequestHeader
     /**
      * NidaRequestHeader Compulsory properties
      *
-     * @var array
+     * @var array<string>
      */
     public const PROPERTIES = [
         'id',
@@ -32,15 +32,16 @@ class NidaRequestHeader
     /**
      * Check if the $body is valid
      *
+     * @param array<string, string> $headers
      * @return void
      *
      * @throws NidaRequestHeaderPropertyNotDefinedException
      */
-    public static function isValid(array $body)
+    public static function isValid(array $headers)
     {
         foreach (self::PROPERTIES as $property) {
             throw_if(
-                ! in_array($property, array_keys($body)),
+                ! in_array($property, array_keys($headers)),
                 new NidaRequestHeaderPropertyNotDefinedException("$property is not defined in the headers")
             );
         }

@@ -29,6 +29,7 @@ class NidaClient
     /**
      * Set the headers
      *
+     * @param array<string,string> $headers
      * @return NidaClient
      */
     public function setHeaders(array $headers)
@@ -41,6 +42,7 @@ class NidaClient
     /**
      * Set the body
      *
+     * @param array<string, mixed> $body
      * @return NidaClient
      */
     public function setBody(array $body)

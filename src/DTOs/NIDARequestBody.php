@@ -9,12 +9,14 @@ class NidaRequestBody
     /**
      * Compulsorury Request Body properties
      *
-     * @var array
+     * @var array<string> PROPERTIES
      */
     public const PROPERTIES = ['payload'];
 
     /**
      * NidaRequestBody class
+     *
+     * @param array<string> $payload
      */
     public function __construct(
         public array $payload
@@ -24,6 +26,7 @@ class NidaRequestBody
     /**
      * Check if the request body is valid
      *
+     * @param array<string, mixed>
      * @return void
      *
      * @throws NidaRequestBodyPropertyNotDefinedException

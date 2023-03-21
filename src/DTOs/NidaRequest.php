@@ -25,6 +25,7 @@ class NidaRequest
     /**
      * Set NidaRequest body
      *
+     * @param array<string, mixed> $body
      * @return NidaRequest
      */
     public function setBody(array $body)
@@ -40,6 +41,7 @@ class NidaRequest
     /**
      * Set NidaRequest headers
      *
+     * @param array<string, string> $headers
      * @return NidaRequest
      */
     public function setHeaders(array $headers)
