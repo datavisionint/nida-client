@@ -102,5 +102,7 @@ class NidaRequestManager
         $this->contentModel = (new ArrayToXml($array, $root))
             ->dropXmlDeclaration()
             ->toXml();
+
+        dump("Content model: " . $this->contentModel);
     }
 }

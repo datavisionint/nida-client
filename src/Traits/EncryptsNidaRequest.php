@@ -35,7 +35,7 @@ trait EncryptsNidaRequest
     /**
      * Generate RSAES_PKCS1_V1_5 Encryption
      */
-    private function generateRSAES_PKCS1_V1_5Encryption(string $message, string $rsaKeyPath): string
+    private function generateRSAES_PKCS1_V1_5Encryption(mixed $message, string $rsaKeyPath): string
     {
         if (is_array($message)) {
             $message = serialize($message);
@@ -55,8 +55,12 @@ trait EncryptsNidaRequest
     /**
      * Generate RSASSA_PKCS1_V1_5 Encryption
      */
-    private function generateRSASSA_PKCS1_V1_5Encryption(string $payload, string $rsaKeyPath): string
+    private function generateRSASSA_PKCS1_V1_5Encryption(mixed $payload, string $rsaKeyPath): string
     {
+        if (is_array($payload)) {
+            $payload = serialize($payload);
+        }
+
         // Load the private key of the stakeholder into a variable
         $privateKey = openssl_pkey_get_private($rsaKeyPath);
 
