@@ -18,6 +18,7 @@ class NidaClient
      */
     public function make()
     {
+        $this->nidaRequest = new NidaRequest();
         return new self;
     }
 
