@@ -40,7 +40,7 @@ class NidaRequestHeader
     {
         foreach (self::PROPERTIES as $property) {
             throw_if(
-                in_array($property, array_keys($body)),
+                !in_array($property, array_keys($body)),
                 new NidaRequestHeaderPropertyNotDefinedException("$property is not defined in the headers")
             );
         }

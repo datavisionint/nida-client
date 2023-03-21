@@ -17,7 +17,7 @@ class NidaRequestBody
      * NidaRequestBody class
      */
     public function __construct(
-        public mixed $payload
+        public array $payload
     ) {
     }
 
@@ -32,7 +32,7 @@ class NidaRequestBody
     {
         foreach (self::PROPERTIES as $property) {
             throw_if(
-                in_array($property, array_keys($body)),
+                !in_array($property, array_keys($body)),
                 new NidaRequestBodyPropertyNotDefinedException("$property is not defined in the body")
             );
         }

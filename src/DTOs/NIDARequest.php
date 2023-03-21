@@ -17,7 +17,7 @@ class NidaRequest
      *
      * @return NidaRequest
      */
-    public function make()
+    public static function make()
     {
         return new self();
     }
