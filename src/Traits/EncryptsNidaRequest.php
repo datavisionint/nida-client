@@ -67,8 +67,6 @@ trait EncryptsNidaRequest
         // Generate the SHA1 hash of the encrypted payload
         $hash = hash('sha1', $payload);
 
-        dump($privateKey, $rsaKeyPath, $payload);
-
         // Sign the hash using the private key and RSASSA-PKCS1-V1_5 signature scheme
         openssl_sign($hash, $signature, $privateKey, OPENSSL_ALGO_SHA1);
 
