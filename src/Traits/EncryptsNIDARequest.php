@@ -42,9 +42,7 @@ trait EncryptsNidaRequest
         }
 
         $publicKey = openssl_pkey_get_public(
-            file_get_contents(
-                $rsaKeyPath
-            )
+            file_get_contents($rsaKeyPath)
         );
         openssl_public_encrypt($message, $encrypted, $publicKey, OPENSSL_PKCS1_PADDING);
         $encrypted = base64_encode($encrypted);
