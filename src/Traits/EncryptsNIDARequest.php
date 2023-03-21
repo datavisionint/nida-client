@@ -2,6 +2,7 @@
 
 namespace SoftwareGalaxy\NidaClient\Traits;
 
+use Illuminate\Support\Facades\File;
 use SoftwareGalaxy\NidaClient\DTOs\AesEncryptionResponse;
 
 trait EncryptsNidaRequest
@@ -42,7 +43,7 @@ trait EncryptsNidaRequest
         }
 
         $publicKey = openssl_pkey_get_public(
-            file_get_contents(
+            File::get(
                 "/" . base_path($rsaKeyPath)
             )
         );
