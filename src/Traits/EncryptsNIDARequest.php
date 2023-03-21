@@ -60,7 +60,9 @@ trait EncryptsNidaRequest
         }
 
         // Load the private key of the stakeholder into a variable
-        $privateKey = openssl_pkey_get_private($rsaKeyPath);
+        $privateKey = openssl_pkey_get_private(
+            file_get_contents($rsaKeyPath)
+        );
 
         // Generate the SHA1 hash of the encrypted payload
         $hash = hash('sha1', $payload);
