@@ -2,6 +2,7 @@
 
 namespace SoftwareGalaxy\NidaClient\Tests;
 
+use Illuminate\Filesystem\Filesystem;
 use SoftwareGalaxy\NidaClient\Facades\NidaClient as FacadesNidaClient;
 use SoftwareGalaxy\NidaClient\NidaClient;
 use SoftwareGalaxy\NidaClient\NidaClientServiceProvider;
@@ -41,7 +42,7 @@ class ServiceProviderTest extends TestCase
             'vendor:publish',
             [
                 '--provider' => 'SoftwareGalaxy\NidaClient\NidaClientServiceProvider',
-                '--tag' => 'config',
+                '--tag' => 'nida-client-config',
             ]
         )->execute();
 
