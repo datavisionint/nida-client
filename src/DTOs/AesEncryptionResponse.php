@@ -2,6 +2,7 @@
 
 namespace SoftwareGalaxy\NidaClient\DTOs;
 
+use SoftwareGalaxy\NidaClient\Exceptions\NidaMessageSecurityPublicKeyPathIsInvalid;
 use SoftwareGalaxy\NidaClient\Traits\EncryptsNidaRequest;
 
 class AesEncryptionResponse
@@ -48,5 +49,21 @@ class AesEncryptionResponse
         $this->messageSecurityPublicKeyPath = $path;
 
         return $this;
+    }
+
+    public function getMessageSecurityPublicKeyPath(){
+        return $this->messageSecurityPublicKeyPath;
+    }
+
+    public function checkMessageSecurityPublicKeyPath(){
+        throw_if(
+            $this->messageSecurityPublicKeyPath == null,
+            new NidaMessageSecurityPublicKeyPathIsInvalid("The message security key is not set")
+        );
+
+        throw_if(
+            !file_exists($this->messageSecurityPublicKeyPath),
+            new NidaMessageSecurityPublicKeyPathIsInvalid("The message security at path {$this->messageSecurityPublicKeyPath} is does not exist!")
+        );
     }
 }
