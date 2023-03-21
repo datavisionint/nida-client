@@ -73,7 +73,7 @@ class NidaRequestManager
 
         $payloadSignature = $this->generateRSASSA_PKCS1_V1_5Encryption(
             $encryptedPayload->encryptedValue,
-            config('nida-client.stake_holder_certificate_path')
+            config('nida-client.nida_stakeholder_certificate_path')
         );
 
         $root = [
