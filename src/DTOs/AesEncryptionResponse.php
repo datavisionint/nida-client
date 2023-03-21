@@ -64,7 +64,7 @@ class AesEncryptionResponse
         );
 
         throw_if(
-            !file_exists($this->messageSecurityPublicKeyPath),
+            ! file_exists($this->messageSecurityPublicKeyPath ?? ''),
             new NidaMessageSecurityPublicKeyPathIsInvalid("The message security at path {$this->messageSecurityPublicKeyPath} is does not exist!")
         );
     }

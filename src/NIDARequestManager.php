@@ -66,7 +66,7 @@ class NidaRequestManager
     public function prepareContentModel()
     {
         $encryptedPayload = $this->generateAesEncryption(
-            $this->nidaRequest->body->payload
+            $this->nidaRequest->body?->payload
         )->setMessageSecurityPublicKeyPath(
             base_path(config('nida-client.nida_message_security_ca_path'))
         );
@@ -85,10 +85,10 @@ class NidaRequestManager
 
         $array = [
             'soap:Header' => [
-                'Id' => $this->nidaRequest->headers->id,
-                'TimeStamp' => $this->nidaRequest->headers->timeStamp,
-                'ClientNameOrIp' => $this->nidaRequest->headers->clientNameOrIp,
-                'UserId' => $this->nidaRequest->headers->userId,
+                'Id' => $this->nidaRequest->headers?->id,
+                'TimeStamp' => $this->nidaRequest->headers?->timeStamp,
+                'ClientNameOrIp' => $this->nidaRequest->headers?->clientNameOrIp,
+                'UserId' => $this->nidaRequest->headers?->userId,
             ],
             'soap:Body' => [
                 'CryptoInfo' => [

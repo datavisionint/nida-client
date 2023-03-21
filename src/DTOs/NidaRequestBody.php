@@ -16,7 +16,7 @@ class NidaRequestBody
     /**
      * NidaRequestBody class
      *
-     * @param array<string> $payload
+     * @param  array<string>  $payload
      */
     public function __construct(
         public array $payload
@@ -26,7 +26,7 @@ class NidaRequestBody
     /**
      * Check if the request body is valid
      *
-     * @param array<string, mixed> $body
+     * @param  array<string, mixed>  $body
      * @return void
      *
      * @throws NidaRequestBodyPropertyNotDefinedException

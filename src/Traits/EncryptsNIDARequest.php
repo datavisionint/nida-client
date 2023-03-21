@@ -11,10 +11,13 @@ trait EncryptsNidaRequest
      */
     private function generateAesEncryption(mixed $message): AesEncryptionResponse
     {
-        $message = is_string($message) ?: serialize($message);
+        $message = is_array($message) ? serialize($message) : $message;
         $cipher = config('nida-client.cipher');
         $key = random_bytes(config('nida-client.key_size'));
-        $iv = random_bytes(openssl_cipher_iv_length(strtolower($cipher)));
+        $iv = random_bytes(
+            max(1, openssl_cipher_iv_length(strtolower($cipher)) ?:
+                32)
+        );
 
         $value = \openssl_encrypt(
             $message,
@@ -23,7 +26,7 @@ trait EncryptsNidaRequest
             0,
             $iv,
             $tag
-        );
+        ) ?: '';
 
         return new AesEncryptionResponse(
             key: $key,
@@ -35,15 +38,15 @@ trait EncryptsNidaRequest
     /**
      * Generate RSAES_PKCS1_V1_5 Encryption
      */
-    private function generateRSAES_PKCS1_V1_5Encryption(mixed $message, string $rsaKeyPath): string
+    private function generateRSAES_PKCS1_V1_5Encryption(mixed $message, string|null $rsaKeyPath): string
     {
         if (is_array($message)) {
             $message = serialize($message);
         }
 
         $publicKey = openssl_pkey_get_public(
-            file_get_contents($rsaKeyPath)
-        );
+            file_get_contents($rsaKeyPath ?? '') ?: ''
+        ) ?: '';
         openssl_public_encrypt($message, $encrypted, $publicKey, OPENSSL_PKCS1_PADDING);
         $encrypted = base64_encode($encrypted);
 
@@ -61,8 +64,8 @@ trait EncryptsNidaRequest
 
         // Load the private key of the stakeholder into a variable
         $privateKey = openssl_pkey_get_private(
-            file_get_contents($rsaKeyPath)
-        );
+            file_get_contents($rsaKeyPath) ?: ''
+        ) ?: '';
 
         // Generate the SHA1 hash of the encrypted payload
         $hash = hash('sha1', $payload);

@@ -32,7 +32,7 @@ class NidaRequestHeader
     /**
      * Check if the $body is valid
      *
-     * @param array<string, string> $headers
+     * @param  array<string, string>  $headers
      * @return void
      *
      * @throws NidaRequestHeaderPropertyNotDefinedException
