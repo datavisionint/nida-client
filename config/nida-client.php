@@ -1,11 +1,11 @@
 <?php
 
-// config for SoftwareGalaxy/NidaClient
+// config for SoftwareGalaxy/NIDAClient
 return [
     /**
      * The base WSDL route
      */
-    "base_wsdl" => env("NIDA_BASE_WSDL_PATH"),
+    "nida_base_wsdl_path" => env("NIDA_BASE_WSDL_PATH", null),
 
     // *********************************************************
     // ALL PATHS ARE RELATIVE TO YOUR SERVER, NOT ABSOLUTE PATHS
@@ -23,7 +23,7 @@ return [
      * Computer) \ Trusted Root
      * Certification Authorities
      */
-    "root_ca_path" => env("NIDA_ROOT_CA_PATH"),
+    "nida_root_ca_path" => env("NIDA_ROOT_CA_PATH", null),
 
     /**
      * Sub CA Certificate (NIDASubCA)
@@ -36,7 +36,7 @@ return [
      * Root Certification
      * Authorities
      */
-    "nida_sub_ca_path" => env("NIDA_SUB_CA_PATH"),
+    "nida_sub_ca_path" => env("NIDA_SUB_CA_PATH", null),
 
     /**
      * Stakeholder Certificate (CSR file)
@@ -50,7 +50,7 @@ return [
      * Computer) \ Personal
 
      */
-    "stake_holder_certificate_path" => env("NIDA_STAKEHOLDER_CERTIFICATE_PATH"),
+    "nida_stakeholder_certificate_path" => env("NIDA_STAKEHOLDER_CERTIFICATE_PATH", null),
 
     /**
      * Message Security Certificate
@@ -65,5 +65,19 @@ return [
      * Root\Certificates (Local
      * Computer) \ Personal
      */
-    "nida_message_security_ca_path" => env("NIDA_MESSAGE_SECURITY_CA_PATH")
+    "nida_message_security_ca_path" => env("NIDA_MESSAGE_SECURITY_CA_PATH", null),
+
+    /**
+     * Key size and sipher for encryption
+     */
+    'key_size' => 32,
+
+    'cipher' => 'AES-256-CBC',
+
+    /**
+     * The user id provided by NIDA during integration
+     *
+     *
+     */
+    'user_id' => env("NIDA_USER_ID", null),
 ];

@@ -1,10 +1,10 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient\Commands;
+namespace SoftwareGalaxy\NIDAClient\Commands;
 
 use Illuminate\Console\Command;
 
-class NidaClientCommand extends Command
+class NIDAClientCommand extends Command
 {
     public $signature = 'nida-client';
 

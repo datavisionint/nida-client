@@ -1,27 +1,40 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient\DTOs;
+namespace SoftwareGalaxy\NIDAClient\DTOs;
 
-use Exception;
+use SoftwareGalaxy\NIDAClient\Exceptions\NIDARequestBodyPropertyNotDefinedException;
 
 class NIDARequestBody
 {
 
-    public const PROPERTIES = ["crypto_info", "payload", "signature"];
+    /**
+     * Compulsorury Request Body properties
+     * @var array
+     */
+    public const PROPERTIES = ["payload"];
 
+    /**
+     * NIDARequestBody class
+     * @param mixed $payload
+     */
     public function __construct(
-        public mixed $cryptoInfo = null,
-        public NIDARequestBodyPayload $payload,
-        public string $signature = null
+        public mixed $payload
     ) {
     }
 
+    /**
+     * Check if the request body is valid
+     *
+     * @param array $body
+     * @return void
+     * @throws NIDARequestBodyPropertyNotDefinedException
+     */
     public static function isValid(array $body)
     {
         foreach (self::PROPERTIES as $property) {
             throw_if(
                 in_array($property, array_keys($body)),
-                new Exception("$property is not defined in the body")
+                new NIDARequestBodyPropertyNotDefinedException("$property is not defined in the body")
             );
         }
     }

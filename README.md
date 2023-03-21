@@ -52,8 +52,17 @@ php artisan vendor:publish --tag="nida-client-views"
 ## Usage
 
 ```php
-$nidaClient = new SoftwareGalaxy\NidaClient();
-echo $nidaClient->echoPhrase('Hello, SoftwareGalaxy!');
+
+$client = NIDAClient::make()
+    ->setHeader([])
+    ->setBody([])
+    ->setMethod(Method::class)
+    ->send();
+$client->json();
+$client->error();
+$client->status();
+
+echo $NIDAClient->echoPhrase('Hello, SoftwareGalaxy!');
 ```
 
 ## Testing

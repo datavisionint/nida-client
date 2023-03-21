@@ -33,13 +33,13 @@
     },
     "autoload": {
         "psr-4": {
-            "SoftwareGalaxy\\NidaClient\\": "src",
-            "SoftwareGalaxy\\NidaClient\\Database\\Factories\\": "database/factories"
+            "SoftwareGalaxy\\NIDAClient\\": "src",
+            "SoftwareGalaxy\\NIDAClient\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SoftwareGalaxy\\NidaClient\\Tests\\": "tests"
+            "SoftwareGalaxy\\NIDAClient\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -60,10 +60,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SoftwareGalaxy\\NidaClient\\NidaClientServiceProvider"
+                "SoftwareGalaxy\\NIDAClient\\NIDAClientServiceProvider"
             ],
             "aliases": {
-                "NidaClient": "SoftwareGalaxy\\NidaClient\\Facades\\NidaClient"
+                "NIDAClient": "SoftwareGalaxy\\NIDAClient\\Facades\\NIDAClient"
             }
         }
     },

@@ -1,13 +1,61 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient;
-use CodeDredd\Soap\Facades\Soap;
+namespace SoftwareGalaxy\NIDAClient;
 
-class NidaClient
+use SoftwareGalaxy\NIDAClient\DTOs\NIDARequest;
+
+class NIDAClient
 {
-    public function test()
+    /**
+     * NIDARequest instance
+     * @var NIDARequest
+     */
+    private NIDARequest $nidaRequest;
+
+    /**
+     * Instantiate NIDAClient
+     *
+     * @return NIDAClient
+     */
+    public function make()
     {
-        // $response = Soap::baseWsdl(config("nida-client.base_wsdl"))
-        dump("pong", config("nida-client.base_wsdl"));
+        return new self;
     }
+
+    /**
+     * Set the headers
+     *
+     * @param array $headers
+     * @return NIDAClient
+     */
+    public function setHeaders(array $headers)
+    {
+        $this->nidaRequest->setHeaders($headers);
+        return $this;
+    }
+
+    /**
+     * Set the body
+     *
+     * @param array $body
+     * @return NIDAClient
+     */
+    public function setBody(array $body)
+    {
+        $this->nidaRequest->setBody($body);
+        return $this;
+    }
+
+    /**
+     * Send the request to NIDA
+     *
+     * @return void
+     */
+    public function send()
+    {
+        $nidaRequestManager = new NIDARequestManager($this->nidaRequest);
+        $requestContent = $nidaRequestManager->send();
+        // return
+    }
+
 }

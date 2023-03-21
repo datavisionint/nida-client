@@ -1,10 +1,10 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient\Tests;
+namespace SoftwareGalaxy\NIDAClient\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use SoftwareGalaxy\NidaClient\NidaClientServiceProvider;
+use SoftwareGalaxy\NIDAClient\NIDAClientServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,14 +13,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'SoftwareGalaxy\\NidaClient\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'SoftwareGalaxy\\NIDAClient\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            NidaClientServiceProvider::class,
+            NIDAClientServiceProvider::class,
         ];
     }
 

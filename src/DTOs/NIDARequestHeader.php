@@ -1,13 +1,19 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient\DTOs;
+namespace SoftwareGalaxy\NIDAClient\DTOs;
 
-use DateTime;
-use Exception;
+use SoftwareGalaxy\NIDAClient\Exceptions\NIDARequestHeaderPropertyNotDefinedException;
 
 class NIDARequestHeader
 {
 
+    /**
+     * NIDA Class
+     * @param string $id
+     * @param mixed $timeStamp
+     * @param string $clientNameOrIp
+     * @param string $userId
+     */
     public function __construct(
         public string $id = "",
         public mixed $timeStamp = "",
@@ -16,6 +22,10 @@ class NIDARequestHeader
     ) {}
 
 
+    /**
+     * NIDARequestHeader Compulsory properties
+     * @var array
+     */
     public const PROPERTIES = [
         "id",
         "time_stamp",
@@ -23,13 +33,18 @@ class NIDARequestHeader
         "user_id"
     ];
 
-
+    /**
+     * Check if the $body is valid
+     * @param array $body
+     * @return void
+     * @throws NIDARequestHeaderPropertyNotDefinedException
+     */
     public static function isValid(array $body)
     {
         foreach (self::PROPERTIES as $property) {
             throw_if(
                 in_array($property, array_keys($body)),
-                new Exception("$property is not defined in the headers")
+                new NIDARequestHeaderPropertyNotDefinedException("$property is not defined in the headers")
             );
         }
     }

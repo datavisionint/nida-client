@@ -1,16 +1,16 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient\Facades;
+namespace SoftwareGalaxy\NIDAClient\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \SoftwareGalaxy\NidaClient\NidaClient
+ * @see \SoftwareGalaxy\NIDAClient\NIDAClient
  */
-class NidaClient extends Facade
+class NIDAClient extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \SoftwareGalaxy\NidaClient\NidaClient::class;
+        return \SoftwareGalaxy\NIDAClient\NIDAClient::class;
     }
 }

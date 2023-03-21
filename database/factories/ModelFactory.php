@@ -1,6 +1,6 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient\Database\Factories;
+namespace SoftwareGalaxy\NIDAClient\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
