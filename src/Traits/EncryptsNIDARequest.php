@@ -8,14 +8,12 @@ trait EncryptsNIDARequest
 {
     /**
      * Generate aes encryption
-     * @param mixed $message
-     * @return AesEncryptionResponse
      */
     private function generateAesEncryption(mixed $message): AesEncryptionResponse
     {
         $message = is_string($message) ?: serialize($message);
-        $cipher = config("nida-client.cipher");
-        $key = random_bytes(config("nida-client.key_size"));
+        $cipher = config('nida-client.cipher');
+        $key = random_bytes(config('nida-client.key_size'));
         $iv = random_bytes(openssl_cipher_iv_length(strtolower($cipher)));
 
         $value = \openssl_encrypt(
@@ -36,16 +34,12 @@ trait EncryptsNIDARequest
 
     /**
      * Generate RSAES_PKCS1_V1_5 Encryption
-     *
-     * @param string $message
-     * @param string $rsaKeyPath
-     * @return string
      */
     private function generateRSAES_PKCS1_V1_5Encryption(string $message, string $rsaKeyPath): string
     {
-
-        if (is_array($message))
+        if (is_array($message)) {
             $message = serialize($message);
+        }
 
         $publicKey = openssl_pkey_get_public(
             file_get_contents(
@@ -54,15 +48,12 @@ trait EncryptsNIDARequest
         );
         openssl_public_encrypt($message, $encrypted, $publicKey, OPENSSL_PKCS1_PADDING);
         $encrypted = base64_encode($encrypted);
+
         return $encrypted;
     }
 
     /**
      * Generate RSASSA_PKCS1_V1_5 Encryption
-     *
-     * @param string $payload
-     * @param string $rsaKeyPath
-     * @return string
      */
     private function generateRSASSA_PKCS1_V1_5Encryption(string $payload, string $rsaKeyPath): string
     {

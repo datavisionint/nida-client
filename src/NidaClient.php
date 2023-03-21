@@ -8,7 +8,6 @@ class NIDAClient
 {
     /**
      * NIDARequest instance
-     * @var NIDARequest
      */
     private NIDARequest $nidaRequest;
 
@@ -25,24 +24,24 @@ class NIDAClient
     /**
      * Set the headers
      *
-     * @param array $headers
      * @return NIDAClient
      */
     public function setHeaders(array $headers)
     {
         $this->nidaRequest->setHeaders($headers);
+
         return $this;
     }
 
     /**
      * Set the body
      *
-     * @param array $body
      * @return NIDAClient
      */
     public function setBody(array $body)
     {
         $this->nidaRequest->setBody($body);
+
         return $this;
     }
 
@@ -57,5 +56,4 @@ class NIDAClient
         $requestContent = $nidaRequestManager->send();
         // return
     }
-
 }

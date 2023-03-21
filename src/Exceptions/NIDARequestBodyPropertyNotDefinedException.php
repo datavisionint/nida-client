@@ -1,6 +1,7 @@
 <?php
 
 namespace SoftwareGalaxy\NIDAClient\Exceptions;
+
 use Exception;
 
 /**
@@ -8,5 +9,4 @@ use Exception;
  */
 class NIDARequestBodyPropertyNotDefinedException extends Exception
 {
-
 }

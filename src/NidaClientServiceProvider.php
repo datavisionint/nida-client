@@ -2,9 +2,9 @@
 
 namespace SoftwareGalaxy\NIDAClient;
 
+use SoftwareGalaxy\NIDAClient\Commands\NIDAClientCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use SoftwareGalaxy\NIDAClient\Commands\NIDAClientCommand;
 
 class NIDAClientServiceProvider extends PackageServiceProvider
 {

@@ -5,7 +5,7 @@ return [
     /**
      * The base WSDL route
      */
-    "nida_base_wsdl_path" => env("NIDA_BASE_WSDL_PATH", null),
+    'nida_base_wsdl_path' => env('NIDA_BASE_WSDL_PATH', null),
 
     // *********************************************************
     // ALL PATHS ARE RELATIVE TO YOUR SERVER, NOT ABSOLUTE PATHS
@@ -23,7 +23,7 @@ return [
      * Computer) \ Trusted Root
      * Certification Authorities
      */
-    "nida_root_ca_path" => env("NIDA_ROOT_CA_PATH", null),
+    'nida_root_ca_path' => env('NIDA_ROOT_CA_PATH', null),
 
     /**
      * Sub CA Certificate (NIDASubCA)
@@ -36,7 +36,7 @@ return [
      * Root Certification
      * Authorities
      */
-    "nida_sub_ca_path" => env("NIDA_SUB_CA_PATH", null),
+    'nida_sub_ca_path' => env('NIDA_SUB_CA_PATH', null),
 
     /**
      * Stakeholder Certificate (CSR file)
@@ -48,9 +48,8 @@ return [
      * Install to cert store: Console
      * Root\Certificates (Local
      * Computer) \ Personal
-
      */
-    "nida_stakeholder_certificate_path" => env("NIDA_STAKEHOLDER_CERTIFICATE_PATH", null),
+    'nida_stakeholder_certificate_path' => env('NIDA_STAKEHOLDER_CERTIFICATE_PATH', null),
 
     /**
      * Message Security Certificate
@@ -65,7 +64,7 @@ return [
      * Root\Certificates (Local
      * Computer) \ Personal
      */
-    "nida_message_security_ca_path" => env("NIDA_MESSAGE_SECURITY_CA_PATH", null),
+    'nida_message_security_ca_path' => env('NIDA_MESSAGE_SECURITY_CA_PATH', null),
 
     /**
      * Key size and sipher for encryption
@@ -76,8 +75,6 @@ return [
 
     /**
      * The user id provided by NIDA during integration
-     *
-     *
      */
-    'user_id' => env("NIDA_USER_ID", null),
+    'user_id' => env('NIDA_USER_ID', null),
 ];

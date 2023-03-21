@@ -6,37 +6,34 @@ use SoftwareGalaxy\NIDAClient\Exceptions\NIDARequestHeaderPropertyNotDefinedExce
 
 class NIDARequestHeader
 {
-
     /**
      * NIDA Class
-     * @param string $id
-     * @param mixed $timeStamp
-     * @param string $clientNameOrIp
-     * @param string $userId
      */
     public function __construct(
-        public string $id = "",
-        public mixed $timeStamp = "",
-        public string $clientNameOrIp = "",
-        public string $userId = ""
-    ) {}
-
+        public string $id = '',
+        public mixed $timeStamp = '',
+        public string $clientNameOrIp = '',
+        public string $userId = ''
+    ) {
+    }
 
     /**
      * NIDARequestHeader Compulsory properties
+     *
      * @var array
      */
     public const PROPERTIES = [
-        "id",
-        "time_stamp",
-        "client_name_or_ip",
-        "user_id"
+        'id',
+        'time_stamp',
+        'client_name_or_ip',
+        'user_id',
     ];
 
     /**
      * Check if the $body is valid
-     * @param array $body
+     *
      * @return void
+     *
      * @throws NIDARequestHeaderPropertyNotDefinedException
      */
     public static function isValid(array $body)

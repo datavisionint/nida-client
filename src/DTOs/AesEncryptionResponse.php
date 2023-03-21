@@ -11,14 +11,15 @@ class AesEncryptionResponse
     private $messageSecurityPublicKeyPath = null;
 
     public function __construct(
-        public string $key = "",
-        public string $iv = "",
-        public string $encryptedValue = ""
+        public string $key = '',
+        public string $iv = '',
+        public string $encryptedValue = ''
     ) {
     }
 
     /**
      * Get the encrypted IV
+     *
      * @return string
      */
     public function getEncryptedIv()
@@ -31,6 +32,7 @@ class AesEncryptionResponse
 
     /**
      * GEt the encrypted IV
+     *
      * @return string
      */
     public function getEncryptedKey()
@@ -44,6 +46,7 @@ class AesEncryptionResponse
     public function setMessageSecurityPublicKeyPath(string $path)
     {
         $this->messageSecurityPublicKeyPath = $path;
+
         return $this;
     }
 }

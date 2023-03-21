@@ -6,16 +6,15 @@ use SoftwareGalaxy\NIDAClient\Exceptions\NIDARequestBodyPropertyNotDefinedExcept
 
 class NIDARequestBody
 {
-
     /**
      * Compulsorury Request Body properties
+     *
      * @var array
      */
-    public const PROPERTIES = ["payload"];
+    public const PROPERTIES = ['payload'];
 
     /**
      * NIDARequestBody class
-     * @param mixed $payload
      */
     public function __construct(
         public mixed $payload
@@ -25,8 +24,8 @@ class NIDARequestBody
     /**
      * Check if the request body is valid
      *
-     * @param array $body
      * @return void
+     *
      * @throws NIDARequestBodyPropertyNotDefinedException
      */
     public static function isValid(array $body)

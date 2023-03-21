@@ -6,10 +6,9 @@ trait GeneratesRequestIds
 {
     /**
      * Generate request ID using uuid
-     * @return string
      */
     public function generateId(): string
     {
-        return (string)str()->uuid();
+        return (string) str()->uuid();
     }
 }

@@ -17,15 +17,11 @@ class NIDARequestManager
 
     /**
      * The content model to send WSDL data
-     *
-     * @var string
      */
     private string $contentModel;
 
     /**
      * NIDARequestManager
-     *
-     * @param NIDARequest $nidaRequest
      */
     public function __construct(
         private NIDARequest $nidaRequest
@@ -35,13 +31,12 @@ class NIDARequestManager
 
     /**
      * Send the request to NIDA
-     *
-     * @return mixed
      */
     public function send(): mixed
     {
         $this->validateRequest();
         $this->prepareContentModel();
+
         return null;
     }
 
@@ -49,16 +44,17 @@ class NIDARequestManager
      * Validate the NIDARequest object
      *
      * @return void
+     *
      * @throws NIDARequestBodyMissingException
      */
     public function validateRequest()
     {
-        if (!($this->nidaRequest->headers instanceof NIDARequestHeader)) {
+        if (! ($this->nidaRequest->headers instanceof NIDARequestHeader)) {
             $this->nidaRequest->generateDefaultHeaders();
         }
         throw_unless(
             $this->nidaRequest->body instanceof NIDARequestBody,
-            new NIDARequestBodyMissingException("The NIDA request body is missing!")
+            new NIDARequestBodyMissingException('The NIDA request body is missing!')
         );
     }
 
@@ -72,12 +68,12 @@ class NIDARequestManager
         $encryptedPayload = $this->generateAesEncryption(
             $this->nidaRequest->body->payload
         )->setMessageSecurityPublicKeyPath(
-            config("nida-client.nida_message_security_ca_path")
+            config('nida-client.nida_message_security_ca_path')
         );
 
         $payloadSignature = $this->generateRSASSA_PKCS1_V1_5Encryption(
             $encryptedPayload->encryptedValue,
-            config("nida-client.stake_holder_certificate_path")
+            config('nida-client.stake_holder_certificate_path')
         );
 
         $root = [
@@ -89,18 +85,18 @@ class NIDARequestManager
 
         $array = [
             'soap:Header' => [
-                "Id" => $this->nidaRequest->headers->id,
-                "TimeStamp" => $this->nidaRequest->headers->timeStamp,
-                "ClientNameOrIp" => $this->nidaRequest->headers->clientNameOrIp,
-                "UserId" => $this->nidaRequest->headers->userId,
+                'Id' => $this->nidaRequest->headers->id,
+                'TimeStamp' => $this->nidaRequest->headers->timeStamp,
+                'ClientNameOrIp' => $this->nidaRequest->headers->clientNameOrIp,
+                'UserId' => $this->nidaRequest->headers->userId,
             ],
             'soap:Body' => [
-                "CryptoInfo" => [
-                    "EncryptedCryptoKey" => $encryptedPayload->getEncryptedKey(),
-                    "EncryptedCryptoIV" => $encryptedPayload->getEncryptedIv()
+                'CryptoInfo' => [
+                    'EncryptedCryptoKey' => $encryptedPayload->getEncryptedKey(),
+                    'EncryptedCryptoIV' => $encryptedPayload->getEncryptedIv(),
                 ],
-                "Payload" => $encryptedPayload->encryptedValue,
-                "Signature" => $payloadSignature
+                'Payload' => $encryptedPayload->encryptedValue,
+                'Signature' => $payloadSignature,
             ],
         ];
         $this->contentModel = (new ArrayToXml($array, $root))

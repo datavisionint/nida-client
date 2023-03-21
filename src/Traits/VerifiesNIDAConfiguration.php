@@ -10,15 +10,16 @@ trait VerifiesNIDAConfiguration
      * Verify NIDA configuration exists
      *
      * @return void
+     *
      * @throws NIDAConfigurationNotFoundException
      */
     public function verifyNIDAConfiguration()
     {
-        $nidaConfigurations = config("nida-client");
-        $keyExceptions = ["key_size", "cipher"];
+        $nidaConfigurations = config('nida-client');
+        $keyExceptions = ['key_size', 'cipher'];
         foreach ($nidaConfigurations as $key => $value) {
             throw_if(
-                $value == null && !in_array($key, $keyExceptions),
+                $value == null && ! in_array($key, $keyExceptions),
                 $this->getError(str()->of($key)->upper(), $key)
             );
         }
@@ -27,8 +28,8 @@ trait VerifiesNIDAConfiguration
     /**
      * Return error
      *
-     * @param mixed $variableName
-     * @param mixed $configurationKeyName
+     * @param  mixed  $variableName
+     * @param  mixed  $configurationKeyName
      * @return NIDAConfigurationNotFoundException
      */
     private function getError($variableName, $configurationKeyName)
