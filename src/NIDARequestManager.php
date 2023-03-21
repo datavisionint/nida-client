@@ -1,19 +1,19 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient;
+namespace SoftwareGalaxy\NidaClient;
 
-use SoftwareGalaxy\NIDAClient\DTOs\NIDARequest;
-use SoftwareGalaxy\NIDAClient\DTOs\NIDARequestBody;
-use SoftwareGalaxy\NIDAClient\DTOs\NIDARequestHeader;
-use SoftwareGalaxy\NIDAClient\Exceptions\NIDARequestBodyMissingException;
-use SoftwareGalaxy\NIDAClient\Traits\EncryptsNIDARequest;
-use SoftwareGalaxy\NIDAClient\Traits\VerifiesNIDAConfiguration;
+use SoftwareGalaxy\NidaClient\DTOs\NidaRequest;
+use SoftwareGalaxy\NidaClient\DTOs\NidaRequestBody;
+use SoftwareGalaxy\NidaClient\DTOs\NidaRequestHeader;
+use SoftwareGalaxy\NidaClient\Exceptions\NidaRequestBodyMissingException;
+use SoftwareGalaxy\NidaClient\Traits\EncryptsNidaRequest;
+use SoftwareGalaxy\NidaClient\Traits\VerifiesNidaConfiguration;
 use Spatie\ArrayToXml\ArrayToXml;
 
-class NIDARequestManager
+class NidaRequestManager
 {
-    use EncryptsNIDARequest;
-    use VerifiesNIDAConfiguration;
+    use EncryptsNidaRequest;
+    use VerifiesNidaConfiguration;
 
     /**
      * The content model to send WSDL data
@@ -21,16 +21,16 @@ class NIDARequestManager
     private string $contentModel;
 
     /**
-     * NIDARequestManager
+     * NidaRequestManager
      */
     public function __construct(
-        private NIDARequest $nidaRequest
+        private NidaRequest $nidaRequest
     ) {
-        $this->verifyNIDAConfiguration();
+        $this->verifyNidaConfiguration();
     }
 
     /**
-     * Send the request to NIDA
+     * Send the request to Nida
      */
     public function send(): mixed
     {
@@ -41,20 +41,20 @@ class NIDARequestManager
     }
 
     /**
-     * Validate the NIDARequest object
+     * Validate the NidaRequest object
      *
      * @return void
      *
-     * @throws NIDARequestBodyMissingException
+     * @throws NidaRequestBodyMissingException
      */
     public function validateRequest()
     {
-        if (! ($this->nidaRequest->headers instanceof NIDARequestHeader)) {
+        if (! ($this->nidaRequest->headers instanceof NidaRequestHeader)) {
             $this->nidaRequest->generateDefaultHeaders();
         }
         throw_unless(
-            $this->nidaRequest->body instanceof NIDARequestBody,
-            new NIDARequestBodyMissingException('The NIDA request body is missing!')
+            $this->nidaRequest->body instanceof NidaRequestBody,
+            new NidaRequestBodyMissingException('The Nida request body is missing!')
         );
     }
 

@@ -1,19 +1,19 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient\Traits;
+namespace SoftwareGalaxy\NidaClient\Traits;
 
-use SoftwareGalaxy\NIDAClient\Exceptions\NIDAConfigurationNotFoundException;
+use SoftwareGalaxy\NidaClient\Exceptions\NidaConfigurationNotFoundException;
 
-trait VerifiesNIDAConfiguration
+trait VerifiesNidaConfiguration
 {
     /**
-     * Verify NIDA configuration exists
+     * Verify Nida configuration exists
      *
      * @return void
      *
-     * @throws NIDAConfigurationNotFoundException
+     * @throws NidaConfigurationNotFoundException
      */
-    public function verifyNIDAConfiguration()
+    public function verifyNidaConfiguration()
     {
         $nidaConfigurations = config('nida-client');
         $keyExceptions = ['key_size', 'cipher'];
@@ -30,10 +30,10 @@ trait VerifiesNIDAConfiguration
      *
      * @param  mixed  $variableName
      * @param  mixed  $configurationKeyName
-     * @return NIDAConfigurationNotFoundException
+     * @return NidaConfigurationNotFoundException
      */
     private function getError($variableName, $configurationKeyName)
     {
-        return new NIDAConfigurationNotFoundException("The configuration {$variableName} is not set. Either define the variable {$variableName} in your .env file, or publish nida-client configuration and add value for {$configurationKeyName} key");
+        return new NidaConfigurationNotFoundException("The configuration {$variableName} is not set. Either define the variable {$variableName} in your .env file, or publish nida-client configuration and add value for {$configurationKeyName} key");
     }
 }

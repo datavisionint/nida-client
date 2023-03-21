@@ -1,21 +1,21 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient\DTOs;
+namespace SoftwareGalaxy\NidaClient\DTOs;
 
-use SoftwareGalaxy\NIDAClient\Traits\GeneratesRequestIds;
+use SoftwareGalaxy\NidaClient\Traits\GeneratesRequestIds;
 
-class NIDARequest
+class NidaRequest
 {
     use GeneratesRequestIds;
 
-    public NIDARequestBody $body;
+    public NidaRequestBody $body;
 
-    public NIDARequestHeader $headers;
+    public NidaRequestHeader $headers;
 
     /**
-     * Create NIDARequest instance
+     * Create NidaRequest instance
      *
-     * @return NIDARequest
+     * @return NidaRequest
      */
     public function make()
     {
@@ -23,14 +23,14 @@ class NIDARequest
     }
 
     /**
-     * Set NIDARequest body
+     * Set NidaRequest body
      *
-     * @return NIDARequest
+     * @return NidaRequest
      */
     public function setBody(array $body)
     {
-        NIDARequestBody::isValid($body);
-        $this->body = new NIDARequestBody(
+        NidaRequestBody::isValid($body);
+        $this->body = new NidaRequestBody(
             payload: $body['payload']
         );
 
@@ -38,14 +38,14 @@ class NIDARequest
     }
 
     /**
-     * Set NIDARequest headers
+     * Set NidaRequest headers
      *
-     * @return NIDARequest
+     * @return NidaRequest
      */
     public function setHeaders(array $headers)
     {
-        NIDARequestHeader::isValid($headers);
-        $this->headers = new NIDARequestHeader(
+        NidaRequestHeader::isValid($headers);
+        $this->headers = new NidaRequestHeader(
             id: $headers['id'],
             clientNameOrIp: $headers['client_name_or_ip'],
             timeStamp: $headers['time_stamp'],
@@ -56,7 +56,7 @@ class NIDARequest
     }
 
     /**
-     * Generate default headers for current NIDARequest
+     * Generate default headers for current NidaRequest
      *
      * @return void
      */
@@ -69,8 +69,8 @@ class NIDARequest
             'user_id' => config('nida-client.user_id'),
         ];
 
-        NIDARequestHeader::isValid($defaultHeaders);
-        $this->headers = new NIDARequestHeader(
+        NidaRequestHeader::isValid($defaultHeaders);
+        $this->headers = new NidaRequestHeader(
             id: $defaultHeaders['id'],
             clientNameOrIp: $defaultHeaders['client_name_or_ip'],
             timeStamp: $defaultHeaders['time_stamp'],

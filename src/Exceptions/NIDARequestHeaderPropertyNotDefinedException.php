@@ -1,12 +1,12 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient\Exceptions;
+namespace SoftwareGalaxy\NidaClient\Exceptions;
 
 use Exception;
 
 /**
- * NIDARequestHeaderPropertyNotDefinedException
+ * NidaRequestHeaderPropertyNotDefinedException
  */
-class NIDARequestHeaderPropertyNotDefinedException extends Exception
+class NidaRequestHeaderPropertyNotDefinedException extends Exception
 {
 }

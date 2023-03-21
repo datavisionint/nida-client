@@ -1,6 +1,6 @@
 {
     "name": "software-galaxy/nida-client",
-    "description": "A client for NIDA API",
+    "description": "A client for Nida API",
     "version": "0.5.5",
     "keywords": [
         "software galaxy",
@@ -33,13 +33,13 @@
     },
     "autoload": {
         "psr-4": {
-            "SoftwareGalaxy\\NIDAClient\\": "src",
-            "SoftwareGalaxy\\NIDAClient\\Database\\Factories\\": "database/factories"
+            "SoftwareGalaxy\\NidaClient\\": "src",
+            "SoftwareGalaxy\\NidaClient\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SoftwareGalaxy\\NIDAClient\\Tests\\": "tests"
+            "SoftwareGalaxy\\NidaClient\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -60,10 +60,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SoftwareGalaxy\\NIDAClient\\NIDAClientServiceProvider"
+                "SoftwareGalaxy\\NidaClient\\NidaClientServiceProvider"
             ],
             "aliases": {
-                "NIDAClient": "SoftwareGalaxy\\NIDAClient\\Facades\\NIDAClient"
+                "NidaClient": "SoftwareGalaxy\\NidaClient\\Facades\\NidaClient"
             }
         }
     },

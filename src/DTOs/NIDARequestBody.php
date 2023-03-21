@@ -1,10 +1,10 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient\DTOs;
+namespace SoftwareGalaxy\NidaClient\DTOs;
 
-use SoftwareGalaxy\NIDAClient\Exceptions\NIDARequestBodyPropertyNotDefinedException;
+use SoftwareGalaxy\NidaClient\Exceptions\NidaRequestBodyPropertyNotDefinedException;
 
-class NIDARequestBody
+class NidaRequestBody
 {
     /**
      * Compulsorury Request Body properties
@@ -14,7 +14,7 @@ class NIDARequestBody
     public const PROPERTIES = ['payload'];
 
     /**
-     * NIDARequestBody class
+     * NidaRequestBody class
      */
     public function __construct(
         public mixed $payload
@@ -26,14 +26,14 @@ class NIDARequestBody
      *
      * @return void
      *
-     * @throws NIDARequestBodyPropertyNotDefinedException
+     * @throws NidaRequestBodyPropertyNotDefinedException
      */
     public static function isValid(array $body)
     {
         foreach (self::PROPERTIES as $property) {
             throw_if(
                 in_array($property, array_keys($body)),
-                new NIDARequestBodyPropertyNotDefinedException("$property is not defined in the body")
+                new NidaRequestBodyPropertyNotDefinedException("$property is not defined in the body")
             );
         }
     }

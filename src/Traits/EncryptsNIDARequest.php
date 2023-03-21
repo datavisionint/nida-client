@@ -1,10 +1,10 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient\Traits;
+namespace SoftwareGalaxy\NidaClient\Traits;
 
-use SoftwareGalaxy\NIDAClient\DTOs\AesEncryptionResponse;
+use SoftwareGalaxy\NidaClient\DTOs\AesEncryptionResponse;
 
-trait EncryptsNIDARequest
+trait EncryptsNidaRequest
 {
     /**
      * Generate aes encryption

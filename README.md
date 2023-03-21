@@ -1,4 +1,4 @@
-# A client for NIDA API
+# A client for Nida API
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/software-galaxy/nida-client.svg?style=flat-square)](https://packagist.org/packages/software-galaxy/nida-client)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/software-galaxy/nida-client/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/software-galaxy/nida-client/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -53,7 +53,7 @@ php artisan vendor:publish --tag="nida-client-views"
 
 ```php
 
-$client = NIDAClient::make()
+$client = NidaClient::make()
     ->setHeader([])
     ->setBody([])
     ->setMethod(Method::class)
@@ -62,7 +62,7 @@ $client->json();
 $client->error();
 $client->status();
 
-echo $NIDAClient->echoPhrase('Hello, SoftwareGalaxy!');
+echo $NidaClient->echoPhrase('Hello, SoftwareGalaxy!');
 ```
 
 ## Testing

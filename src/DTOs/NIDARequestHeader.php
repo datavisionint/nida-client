@@ -1,13 +1,13 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient\DTOs;
+namespace SoftwareGalaxy\NidaClient\DTOs;
 
-use SoftwareGalaxy\NIDAClient\Exceptions\NIDARequestHeaderPropertyNotDefinedException;
+use SoftwareGalaxy\NidaClient\Exceptions\NidaRequestHeaderPropertyNotDefinedException;
 
-class NIDARequestHeader
+class NidaRequestHeader
 {
     /**
-     * NIDA Class
+     * Nida Class
      */
     public function __construct(
         public string $id = '',
@@ -18,7 +18,7 @@ class NIDARequestHeader
     }
 
     /**
-     * NIDARequestHeader Compulsory properties
+     * NidaRequestHeader Compulsory properties
      *
      * @var array
      */
@@ -34,14 +34,14 @@ class NIDARequestHeader
      *
      * @return void
      *
-     * @throws NIDARequestHeaderPropertyNotDefinedException
+     * @throws NidaRequestHeaderPropertyNotDefinedException
      */
     public static function isValid(array $body)
     {
         foreach (self::PROPERTIES as $property) {
             throw_if(
                 in_array($property, array_keys($body)),
-                new NIDARequestHeaderPropertyNotDefinedException("$property is not defined in the headers")
+                new NidaRequestHeaderPropertyNotDefinedException("$property is not defined in the headers")
             );
         }
     }

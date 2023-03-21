@@ -1,12 +1,12 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient\DTOs;
+namespace SoftwareGalaxy\NidaClient\DTOs;
 
-use SoftwareGalaxy\NIDAClient\Traits\EncryptsNIDARequest;
+use SoftwareGalaxy\NidaClient\Traits\EncryptsNidaRequest;
 
 class AesEncryptionResponse
 {
-    use EncryptsNIDARequest;
+    use EncryptsNidaRequest;
 
     private $messageSecurityPublicKeyPath = null;
 

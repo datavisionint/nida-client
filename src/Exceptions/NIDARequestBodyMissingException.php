@@ -1,12 +1,12 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient\Exceptions;
+namespace SoftwareGalaxy\NidaClient\Exceptions;
 
 use Exception;
 
 /**
- * NIDARequestBodyMissingException
+ * NidaRequestBodyMissingException
  */
-class NIDARequestBodyMissingException extends Exception
+class NidaRequestBodyMissingException extends Exception
 {
 }

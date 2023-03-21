@@ -1,12 +1,12 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient\Exceptions;
+namespace SoftwareGalaxy\NidaClient\Exceptions;
 
 use Exception;
 
 /**
- * NIDAConfigurationNotFoundException
+ * NidaConfigurationNotFoundException
  */
-class NIDAConfigurationNotFoundException extends Exception
+class NidaConfigurationNotFoundException extends Exception
 {
 }

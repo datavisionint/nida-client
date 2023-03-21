@@ -1,6 +1,6 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient\Traits;
+namespace SoftwareGalaxy\NidaClient\Traits;
 
 trait GeneratesRequestIds
 {

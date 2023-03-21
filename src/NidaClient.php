@@ -1,20 +1,20 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient;
+namespace SoftwareGalaxy\NidaClient;
 
-use SoftwareGalaxy\NIDAClient\DTOs\NIDARequest;
+use SoftwareGalaxy\NidaClient\DTOs\NidaRequest;
 
-class NIDAClient
+class NidaClient
 {
     /**
-     * NIDARequest instance
+     * NidaRequest instance
      */
-    private NIDARequest $nidaRequest;
+    private NidaRequest $nidaRequest;
 
     /**
-     * Instantiate NIDAClient
+     * Instantiate NidaClient
      *
-     * @return NIDAClient
+     * @return NidaClient
      */
     public function make()
     {
@@ -24,7 +24,7 @@ class NIDAClient
     /**
      * Set the headers
      *
-     * @return NIDAClient
+     * @return NidaClient
      */
     public function setHeaders(array $headers)
     {
@@ -36,7 +36,7 @@ class NIDAClient
     /**
      * Set the body
      *
-     * @return NIDAClient
+     * @return NidaClient
      */
     public function setBody(array $body)
     {
@@ -46,13 +46,13 @@ class NIDAClient
     }
 
     /**
-     * Send the request to NIDA
+     * Send the request to Nida
      *
      * @return void
      */
     public function send()
     {
-        $nidaRequestManager = new NIDARequestManager($this->nidaRequest);
+        $nidaRequestManager = new NidaRequestManager($this->nidaRequest);
         $requestContent = $nidaRequestManager->send();
         // return
     }

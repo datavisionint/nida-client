@@ -1,12 +1,12 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient;
+namespace SoftwareGalaxy\NidaClient;
 
-use SoftwareGalaxy\NIDAClient\Commands\NIDAClientCommand;
+use SoftwareGalaxy\NidaClient\Commands\NidaClientCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class NIDAClientServiceProvider extends PackageServiceProvider
+class NidaClientServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -20,6 +20,6 @@ class NIDAClientServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_nida-client_table')
-            ->hasCommand(NIDAClientCommand::class);
+            ->hasCommand(NidaClientCommand::class);
     }
 }

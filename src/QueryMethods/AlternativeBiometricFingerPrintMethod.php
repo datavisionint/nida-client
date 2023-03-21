@@ -1,6 +1,6 @@
 <?php
 
-namespace SoftwareGalaxy\NIDAClient\QueryMethods;
+namespace SoftwareGalaxy\NidaClient\QueryMethods;
 
 class AlternativeBiometricFingerPrintMethod implements QueryMethod
 {
