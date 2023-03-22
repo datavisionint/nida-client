@@ -8,17 +8,11 @@ use SoftwareGalaxy\NidaClient\Lib\Encryption\EncryptsNidaRequest;
 use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequest;
 use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequestBody;
 use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequestHeader;
-use Spatie\ArrayToXml\ArrayToXml;
 
 class NidaRequestManager
 {
     use EncryptsNidaRequest;
     use VerifiesNidaConfiguration;
-
-    /**
-     * The content model to send WSDL data
-     */
-    private string $contentModel;
 
     /**
      * NidaRequestManager
@@ -35,8 +29,12 @@ class NidaRequestManager
     public function send(): mixed
     {
         $this->validateRequest();
-        $this->prepareContentModel();
-
+        $fullRequest = $this->getFullRequest();
+        $response = $this->nidaRequest->queryMethod->send([
+            "Header" => $fullRequest->header,
+            "Body" => $fullRequest->body
+        ]);
+        dump($response);
         return null;
     }
 
@@ -47,9 +45,9 @@ class NidaRequestManager
      *
      * @throws NidaRequestBodyMissingException
      */
-    public function validateRequest()
+    private function validateRequest()
     {
-        if (! ($this->nidaRequest->headers instanceof NidaRequestHeader)) {
+        if (!($this->nidaRequest->headers instanceof NidaRequestHeader)) {
             $this->nidaRequest->generateDefaultHeaders();
         }
         throw_unless(
@@ -61,9 +59,9 @@ class NidaRequestManager
     /**
      * Prepare the content model
      *
-     * @return void
+     * @return object
      */
-    public function prepareContentModel()
+    public function getFullRequest(): object
     {
         $encryptedPayload = $this->generateAesEncryption(
             $this->nidaRequest->body?->payload
@@ -76,33 +74,9 @@ class NidaRequestManager
             base_path(config('nida-client.nida_stakeholder_certificate_path'))
         );
 
-        $root = [
-            'rootElementName' => 'soap:Envelope',
-            '_attributes' => [
-                'xmlns:soap' => 'http://www.w3.org/2003/05/soap-envelope/',
-            ],
-        ];
-
-        $array = [
-            'soap:Header' => [
-                'Id' => $this->nidaRequest->headers?->id,
-                'TimeStamp' => $this->nidaRequest->headers?->timeStamp,
-                'ClientNameOrIp' => $this->nidaRequest->headers?->clientNameOrIp,
-                'UserId' => $this->nidaRequest->headers?->userId,
-            ],
-            'soap:Body' => [
-                'CryptoInfo' => [
-                    'EncryptedCryptoKey' => $encryptedPayload->getEncryptedKey(),
-                    'EncryptedCryptoIV' => $encryptedPayload->getEncryptedIv(),
-                ],
-                'Payload' => $encryptedPayload->encryptedValue,
-                'Signature' => $payloadSignature,
-            ],
-        ];
-        $this->contentModel = (new ArrayToXml($array, $root))
-            ->dropXmlDeclaration()
-            ->toXml();
-
-        dump('Content model: '.$this->contentModel);
+        return $this->nidaRequest->prepareRawRequest(
+            $encryptedPayload,
+            $payloadSignature
+        );
     }
 }

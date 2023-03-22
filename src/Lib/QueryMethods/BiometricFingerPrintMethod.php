@@ -2,6 +2,6 @@
 
 namespace SoftwareGalaxy\NidaClient\Lib\QueryMethods;
 
-class BiometricFingerPrintMethod implements QueryMethod
+class BiometricFingerPrintMethod  extends GeneralMethod
 {
 }

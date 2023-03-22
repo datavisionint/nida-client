@@ -2,6 +2,6 @@
 
 namespace SoftwareGalaxy\NidaClient\Lib\QueryMethods;
 
-class WithoutAuthenticationMethod implements QueryMethod
+class WithoutAuthenticationMethod extends GeneralMethod
 {
 }

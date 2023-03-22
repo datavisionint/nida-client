@@ -2,6 +2,7 @@
 
 namespace SoftwareGalaxy\NidaClient;
 
+use SoftwareGalaxy\NidaClient\Lib\QueryMethods\QueryMethod;
 use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequest;
 
 class NidaClient
@@ -49,6 +50,17 @@ class NidaClient
     {
         $this->nidaRequest->setBody($body);
 
+        return $this;
+    }
+
+    /**
+     * Set method
+     *
+     * @return NidaClient
+     */
+    public function setMethod(QueryMethod $queryMethod)
+    {
+        $this->nidaRequest->setMethod($queryMethod);
         return $this;
     }
 
