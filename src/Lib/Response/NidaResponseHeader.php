@@ -9,5 +9,4 @@ class NidaResponseHeader
         public mixed $timeStamp = '',
     ) {
     }
-
 }

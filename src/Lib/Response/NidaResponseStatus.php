@@ -4,7 +4,6 @@ namespace SoftwareGalaxy\NidaClient\Lib\Response;
 
 class NidaResponseStatus
 {
-
     /**
      * NidaResponseStatus class
      *

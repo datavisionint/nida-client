@@ -49,7 +49,7 @@ class NidaRequestManager
      */
     public function validateRequest()
     {
-        if (!($this->nidaRequest->headers instanceof NidaRequestHeader)) {
+        if (! ($this->nidaRequest->headers instanceof NidaRequestHeader)) {
             $this->nidaRequest->generateDefaultHeaders();
         }
         throw_unless(
@@ -103,6 +103,6 @@ class NidaRequestManager
             ->dropXmlDeclaration()
             ->toXml();
 
-        dump('Content model: ' . $this->contentModel);
+        dump('Content model: '.$this->contentModel);
     }
 }

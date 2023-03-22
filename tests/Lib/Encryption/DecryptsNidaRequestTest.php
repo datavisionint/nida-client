@@ -6,9 +6,9 @@ use SoftwareGalaxy\NidaClient\Lib\Encryption\DecryptsNidaResponse;
 use SoftwareGalaxy\NidaClient\Lib\Encryption\EncryptsNidaRequest;
 
 beforeEach(function () {
-    $this->testPublicKeyPath = __DIR__ . "/test_keys/test.crt";
-    $this->testPrivateKeyPath = __DIR__ . "/test_keys/test.key";
-    $this->testCsrPath = __DIR__ . "/test_keys/test.csr";
+    $this->testPublicKeyPath = __DIR__.'/test_keys/test.crt';
+    $this->testPrivateKeyPath = __DIR__.'/test_keys/test.key';
+    $this->testCsrPath = __DIR__.'/test_keys/test.csr';
 
     $this->decryptNidaRequest = new class
     {
@@ -20,8 +20,8 @@ beforeEach(function () {
     };
 });
 
-it("verifies RSASSA_PKCS1_V1_5 signature", function () {
-    $payload = "hello";
+it('verifies RSASSA_PKCS1_V1_5 signature', function () {
+    $payload = 'hello';
     // create a signature
     $signature = $this->encryptNidaRequest->generateRSASSA_PKCS1_V1_5Encryption($payload, $this->testPrivateKeyPath);
 
@@ -29,23 +29,22 @@ it("verifies RSASSA_PKCS1_V1_5 signature", function () {
     $response = $this->decryptNidaRequest->verifyRSASSA_PKCS1_V1_5Signature($signature, $payload, $this->testPublicKeyPath);
 
     expect($response)->toBeArray();
-    expect($response)->toHaveKeys(["success", "message"]);
-    expect($response["success"])->toBeTrue();
-    expect($response["message"])->toEqual('Digital signature is valid');
+    expect($response)->toHaveKeys(['success', 'message']);
+    expect($response['success'])->toBeTrue();
+    expect($response['message'])->toEqual('Digital signature is valid');
 
     // verify a signature that is wrong
-    $signature = "not real";
+    $signature = 'not real';
     $response = $this->decryptNidaRequest->verifyRSASSA_PKCS1_V1_5Signature($signature, $payload, $this->testPublicKeyPath);
 
     expect($response)->toBeArray();
-    expect($response)->toHaveKeys(["success", "message"]);
-    expect($response["success"])->toBeFalse();
-    expect($response["message"])->toEqual('Digital signature is not valid');
+    expect($response)->toHaveKeys(['success', 'message']);
+    expect($response['success'])->toBeFalse();
+    expect($response['message'])->toEqual('Digital signature is not valid');
 });
 
-it("decrypts RSAES_PKCS1_V1_5 encryption", function () {
-
-    $payload = "hello";
+it('decrypts RSAES_PKCS1_V1_5 encryption', function () {
+    $payload = 'hello';
 
     // encrypt payload
     $encryptedPayload = $this->encryptNidaRequest->generateRSAES_PKCS1_V1_5Encryption($payload, $this->testPublicKeyPath);
@@ -57,9 +56,8 @@ it("decrypts RSAES_PKCS1_V1_5 encryption", function () {
     expect($decryptedPayload)->toEqual($payload);
 });
 
-it("decrypts AES encryption", function () {
-
-    $payload = "hello";
+it('decrypts AES encryption', function () {
+    $payload = 'hello';
 
     // encrypt payload
     $encryptedPayload = $this->encryptNidaRequest->generateAesEncryption($payload);
