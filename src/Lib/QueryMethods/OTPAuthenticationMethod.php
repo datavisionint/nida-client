@@ -4,5 +4,5 @@ namespace SoftwareGalaxy\NidaClient\Lib\QueryMethods;
 
 class OTPAuthenticationMethod extends GeneralMethod
 {
-    protected $component = "OTPVerification";
+    protected string $component = "OTPVerification";
 }
