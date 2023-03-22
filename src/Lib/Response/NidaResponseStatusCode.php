@@ -77,6 +77,11 @@ class NidaResponseStatusCode
 
     public string $description;
 
+    /**
+     * Make NidaResponseStatusCode instance
+     *
+     * @throws NidaResponseCodeStatusInvalidException
+     */
     public static function make(string $statusCode): self
     {
         $statusCodes = collect(self::STATUS_CODES);
@@ -88,8 +93,8 @@ class NidaResponseStatusCode
         );
 
         $statusCodeInstance = new self;
-        $statusCodeInstance->code = $_statusCode['code'];
-        $statusCodeInstance->description = $_statusCode['description'];
+        $statusCodeInstance->code = $_statusCode['code']??"";
+        $statusCodeInstance->description = $_statusCode['description']??"";
 
         return $statusCodeInstance;
     }

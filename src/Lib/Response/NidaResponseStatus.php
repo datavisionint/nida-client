@@ -6,8 +6,6 @@ class NidaResponseStatus
 {
     /**
      * NidaResponseStatus class
-     *
-     * @param  array<string>  $payload
      */
     public function __construct(
         public string $component,
