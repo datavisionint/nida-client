@@ -2,13 +2,12 @@
 
 namespace SoftwareGalaxy\NidaClient\Lib\Encryption;
 
-
 trait EncryptsNidaRequest
 {
     /**
      * Generate aes encryption
      */
-    private function generateAesEncryption(mixed $message): AesEncryptionResponse
+    public function generateAesEncryption(mixed $message): AesEncryptionResponse
     {
         $message = is_array($message) ? serialize($message) : $message;
         $cipher = config('nida-client.cipher');
@@ -18,7 +17,7 @@ trait EncryptsNidaRequest
                 32)
         );
 
-        $value = \openssl_encrypt(
+        $value = openssl_encrypt(
             $message,
             strtolower($cipher),
             $key,
@@ -37,16 +36,22 @@ trait EncryptsNidaRequest
     /**
      * Generate RSAES_PKCS1_V1_5 Encryption
      */
-    private function generateRSAES_PKCS1_V1_5Encryption(mixed $message, string|null $rsaKeyPath): string
+    public function generateRSAES_PKCS1_V1_5Encryption(mixed $message, string|null $rsaPublicKeyPath): string
     {
         if (is_array($message)) {
             $message = serialize($message);
         }
 
         $publicKey = openssl_pkey_get_public(
-            file_get_contents($rsaKeyPath ?? '') ?: ''
+            file_get_contents($rsaPublicKeyPath ?? '') ?: ''
         ) ?: '';
-        openssl_public_encrypt($message, $encrypted, $publicKey, OPENSSL_PKCS1_PADDING);
+
+        openssl_public_encrypt(
+            $message,
+            $encrypted,
+            $publicKey,
+            OPENSSL_PKCS1_PADDING
+        );
         $encrypted = base64_encode($encrypted);
 
         return $encrypted;
@@ -55,7 +60,7 @@ trait EncryptsNidaRequest
     /**
      * Generate RSASSA_PKCS1_V1_5 Encryption
      */
-    private function generateRSASSA_PKCS1_V1_5Encryption(mixed $payload, string $rsaKeyPath): string
+    public function generateRSASSA_PKCS1_V1_5Encryption(mixed $payload, string $rsaPrivateKeyPath): string
     {
         if (is_array($payload)) {
             $payload = serialize($payload);
@@ -63,7 +68,7 @@ trait EncryptsNidaRequest
 
         // Load the private key of the stakeholder into a variable
         $privateKey = openssl_pkey_get_private(
-            file_get_contents($rsaKeyPath) ?: ''
+            file_get_contents($rsaPrivateKeyPath) ?: ''
         ) ?: '';
 
         // Generate the SHA1 hash of the encrypted payload
@@ -75,8 +80,6 @@ trait EncryptsNidaRequest
         // Encode the signature using base64 encoding
         $encodedSignature = base64_encode($signature);
 
-        // // The encoded signature can now be appended to the encrypted payload and sent to the recipient
-        // $signedPayload = $payload . '.' . $encodedSignature;
         return $encodedSignature;
     }
 }

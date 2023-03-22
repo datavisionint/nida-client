@@ -38,7 +38,7 @@ class AesEncryptionResponse
     public function getEncryptedKey()
     {
         return $this->generateRSAES_PKCS1_V1_5Encryption(
-            $this->iv,
+            $this->key,
             $this->messageSecurityPublicKeyPath
         );
     }
