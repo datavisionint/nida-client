@@ -2,12 +2,12 @@
 
 namespace SoftwareGalaxy\NidaClient;
 
-use SoftwareGalaxy\NidaClient\DTOs\NidaRequest;
-use SoftwareGalaxy\NidaClient\DTOs\NidaRequestBody;
-use SoftwareGalaxy\NidaClient\DTOs\NidaRequestHeader;
 use SoftwareGalaxy\NidaClient\Exceptions\NidaRequestBodyMissingException;
-use SoftwareGalaxy\NidaClient\Traits\EncryptsNidaRequest;
-use SoftwareGalaxy\NidaClient\Traits\VerifiesNidaConfiguration;
+use SoftwareGalaxy\NidaClient\Lib\Configuration\VerifiesNidaConfiguration;
+use SoftwareGalaxy\NidaClient\Lib\Encryption\EncryptsNidaRequest;
+use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequest;
+use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequestBody;
+use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequestHeader;
 use Spatie\ArrayToXml\ArrayToXml;
 
 class NidaRequestManager
@@ -49,7 +49,7 @@ class NidaRequestManager
      */
     public function validateRequest()
     {
-        if (! ($this->nidaRequest->headers instanceof NidaRequestHeader)) {
+        if (!($this->nidaRequest->headers instanceof NidaRequestHeader)) {
             $this->nidaRequest->generateDefaultHeaders();
         }
         throw_unless(
@@ -103,6 +103,6 @@ class NidaRequestManager
             ->dropXmlDeclaration()
             ->toXml();
 
-        dump('Content model: '.$this->contentModel);
+        dump('Content model: ' . $this->contentModel);
     }
 }

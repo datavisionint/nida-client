@@ -1,6 +1,6 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient\Traits;
+namespace SoftwareGalaxy\NidaClient\Lib\Configuration;
 
 use SoftwareGalaxy\NidaClient\Exceptions\NidaConfigurationNotFoundException;
 

@@ -1,8 +1,7 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient\Traits;
+namespace SoftwareGalaxy\NidaClient\Lib\Encryption;
 
-use SoftwareGalaxy\NidaClient\DTOs\AesEncryptionResponse;
 
 trait EncryptsNidaRequest
 {

@@ -1,6 +1,6 @@
 <?php
 
-use SoftwareGalaxy\NidaClient\DTOs\AesEncryptionResponse;
+use SoftwareGalaxy\NidaClient\Lib\Encryption\AesEncryptionResponse;
 
 it('allows object instantiation without parameters', fn () => expect(new AesEncryptionResponse())->toBeInstanceOf(AesEncryptionResponse::class));
 

@@ -2,7 +2,7 @@
 
 namespace SoftwareGalaxy\NidaClient;
 
-use SoftwareGalaxy\NidaClient\DTOs\NidaRequest;
+use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequest;
 
 class NidaClient
 {

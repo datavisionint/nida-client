@@ -1,8 +1,8 @@
 <?php
 
-use SoftwareGalaxy\NidaClient\DTOs\NidaRequest;
-use SoftwareGalaxy\NidaClient\DTOs\NidaRequestBody;
-use SoftwareGalaxy\NidaClient\DTOs\NidaRequestHeader;
+use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequest;
+use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequestBody;
+use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequestHeader;
 
 beforeEach(function () {
     $this->NidaRequest = new NidaRequest;

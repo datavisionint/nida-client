@@ -1,8 +1,6 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient\DTOs;
-
-use SoftwareGalaxy\NidaClient\Traits\GeneratesRequestIds;
+namespace SoftwareGalaxy\NidaClient\Lib\Request;
 
 class NidaRequest
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient\DTOs;
+namespace SoftwareGalaxy\NidaClient\Lib\Request;
 
 use SoftwareGalaxy\NidaClient\Exceptions\NidaRequestBodyPropertyNotDefinedException;
 

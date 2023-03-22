@@ -1,6 +1,6 @@
 <?php
 
-use SoftwareGalaxy\NidaClient\DTOs\NidaRequestHeader;
+use SoftwareGalaxy\NidaClient\Lib\Request\NidaRequestHeader;
 
 it("validates and throws error when the header doesn't have all required properties", function () {
     expect(fn () => NidaRequestHeader::isValid([]))->toThrow('id is not defined in the headers');

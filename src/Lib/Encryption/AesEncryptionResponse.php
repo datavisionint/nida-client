@@ -1,9 +1,8 @@
 <?php
 
-namespace SoftwareGalaxy\NidaClient\DTOs;
+namespace SoftwareGalaxy\NidaClient\Lib\Encryption;
 
 use SoftwareGalaxy\NidaClient\Exceptions\NidaMessageSecurityPublicKeyPathIsInvalid;
-use SoftwareGalaxy\NidaClient\Traits\EncryptsNidaRequest;
 
 class AesEncryptionResponse
 {
