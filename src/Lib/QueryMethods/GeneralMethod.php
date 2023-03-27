@@ -16,7 +16,17 @@ abstract class GeneralMethod implements QueryMethod
      *
      * @var array<string, string>
      */
-    protected array $options = [];
+    protected array $options = [
+        'uri' => 'http://schemas.xmlsoap.org/soap/envelope/',
+        'style' => 1,
+        'use' => 1,
+        'soap_version' => 2,
+        'cache_wsdl' => 0,
+        'connection_timeout' => 15,
+        'trace' => true,
+        'encoding' => 'UTF-8',
+        'exceptions' => true,
+    ];
 
     /**
      * Send query data

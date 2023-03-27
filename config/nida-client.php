@@ -5,7 +5,7 @@ return [
     /**
      * The base WSDL route
      */
-    'nida_base_wsdl_path' => env('NIDA_BASE_WSDL_PATH', null),
+    'nida_base_wsdl_path' => env('NIDA_BASE_WSDL_PATH', "https://nacer01/TZ_CIG/GatewayService.svc?singleWsdl"),
 
     // *********************************************************
     // ALL PATHS ARE RELATIVE TO YOUR SERVER, NOT ABSOLUTE PATHS
