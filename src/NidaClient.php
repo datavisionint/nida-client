@@ -10,7 +10,7 @@ class NidaClient
     /**
      * NidaRequest instance
      */
-    private NidaRequest $nidaRequest;
+    private ?NidaRequest $nidaRequest;
 
     public function __construct()
     {

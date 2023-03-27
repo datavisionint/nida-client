@@ -34,7 +34,7 @@ class NidaRequestManager
             "Header" => $fullRequest->header,
             "Body" => $fullRequest->body
         ]);
-        dump($response);
+
         return null;
     }
 
