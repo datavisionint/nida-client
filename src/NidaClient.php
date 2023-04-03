@@ -24,7 +24,7 @@ class NidaClient
      */
     public function make()
     {
-        return new self;
+        return new static;
     }
 
     /**
